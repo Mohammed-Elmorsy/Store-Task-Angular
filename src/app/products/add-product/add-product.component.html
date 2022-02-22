@@ -1,0 +1,49 @@
+<div class="container pt-4 d-flex flex-column justify-content-center align-items-center full-height">
+    <h3>Add a new product</h3>
+    <div [formGroup]="productForm" style="width: 80%;">
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" class="form-control" [ngClass]="{ 'danger': category.invalid  && (category?.dirty || category?.touched)}" id="category" placeholder="Enter category" formControlName="category">
+            <!-- Validation -->
+            <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">     
+                <div *ngIf="category?.errors?.required" class="flex">
+                    <small class="validation-mesages">Category is required</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" [ngClass]="{ 'danger': title.invalid  && (title?.dirty || title?.touched) }" id="title" placeholder="Enter title" formControlName="title">
+            <!-- Validation -->
+            <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">     
+                <div *ngIf="title?.errors?.required" class="flex">
+                    <small class="validation-mesages">Title is required</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" [ngClass]="{ 'danger': price.invalid  && (price?.dirty || price?.touched) }" id="price" placeholder="Enter price" formControlName="price">
+            <!-- Validation -->
+            <div *ngIf="price?.invalid && (price?.dirty || price?.touched)">     
+                <div *ngIf="price?.errors?.required" class="flex">
+                    <small class="validation-mesages">Price is required</small>
+                </div>
+                <div *ngIf="price?.errors?.min" class="flex">
+                    <small class="validation-mesages">Price must be greater than or equal to 0</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" [ngClass]="{ 'danger': description.invalid  && (description?.dirty || description?.touched)}" id="description" placeholder="Enter description" formControlName="description" rows="3"></textarea>
+            <!-- Validation -->
+            <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">     
+                <div *ngIf="description?.errors?.required" class="flex">
+                    <small class="validation-mesages">Description is required</small>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" (click)="addProduct()" [disabled]="productForm.invalid">Submit</button>
+    </div>
+</div>

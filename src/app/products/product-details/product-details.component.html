@@ -1,0 +1,19 @@
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center full-height">
+    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<img hidden [src]="product.image" class="card-img-top" (load)="stopLoading()">
+
+<div *ngIf="!isLoading" class="container pt-4 d-flex justify-content-center align-items-center full-height">
+    <div class="card" style="width: 30rem;">
+        <img [src]="product.image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.price }} $</p>
+          <p class="card-text">{{ product.description }}</p>
+        </div>
+      </div>
+</div>
+ 

@@ -1,0 +1,13 @@
+.card:hover {
+    border: 1px solid rgb(138, 2, 2);
+}
+
+img {
+    height: 250px;
+    width: 300px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
